@@ -67,6 +67,7 @@ def call_salesforce(url, method, session, headers, **kwargs):
     Returns a `requests.result` object.
     """
 
+    print('Headers: ', headers)
     additional_headers = kwargs.pop('additional_headers', dict())
     headers.update(additional_headers or dict())
     result = session.request(method, url, headers=headers, **kwargs)

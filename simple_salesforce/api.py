@@ -499,6 +499,7 @@ class Salesforce(object):
         additional_headers = kwargs.pop('headers', dict())
         headers.update(additional_headers)
 
+        print('Headers: ', headers)
         result = self.session.request(
             method, url, headers=headers, **kwargs)
 
