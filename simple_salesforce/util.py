@@ -1,6 +1,7 @@
 """Utility functions for simple-salesforce"""
 
 import xml.dom.minidom
+import logging
 
 from simple_salesforce.exceptions import (
     SalesforceGeneralError, SalesforceExpiredSession,
