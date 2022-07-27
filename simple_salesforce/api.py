@@ -500,6 +500,7 @@ class Salesforce(object):
         headers.update(additional_headers)
 
         logging.info(str(headers))
+        logging.info(str(url))
         result = self.session.request(
             method, url, headers=headers, **kwargs)
 

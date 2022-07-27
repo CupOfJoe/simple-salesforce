@@ -69,6 +69,7 @@ def call_salesforce(url, method, session, headers, **kwargs):
     """
 
     logging.info(str(headers))
+    logging.info(str(url))
     additional_headers = kwargs.pop('additional_headers', dict())
     headers.update(additional_headers or dict())
     result = session.request(method, url, headers=headers, **kwargs)
