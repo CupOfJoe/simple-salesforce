@@ -68,10 +68,12 @@ def call_salesforce(url, method, session, headers, **kwargs):
     Returns a `requests.result` object.
     """
 
-    logging.info(str(headers))
-    logging.info(str(url))
     additional_headers = kwargs.pop('additional_headers', dict())
     headers.update(additional_headers or dict())
+
+    logging.info('Headers: ' + str(headers))
+    logging.info('Additional headers: ' + str(additional_headers))
+
     result = session.request(method, url, headers=headers, **kwargs)
 
     if result.status_code >= 300:

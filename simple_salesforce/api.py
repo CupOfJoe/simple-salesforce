@@ -499,8 +499,8 @@ class Salesforce(object):
         additional_headers = kwargs.pop('headers', dict())
         headers.update(additional_headers)
 
-        logging.info(str(headers))
-        logging.info(str(url))
+        logging.info('Headers: ' + str(headers))
+        logging.info('Additional headers: ' + str(additional_headers))
         result = self.session.request(
             method, url, headers=headers, **kwargs)
 
