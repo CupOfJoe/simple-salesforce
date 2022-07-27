@@ -12,6 +12,8 @@ import json
 import re
 from collections import namedtuple
 
+logging.basicConfig(level=logging.DEBUG)
+
 try:
     from urlparse import urlparse, urljoin
 except ImportError:

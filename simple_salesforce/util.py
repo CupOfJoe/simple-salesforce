@@ -9,6 +9,7 @@ from simple_salesforce.exceptions import (
     SalesforceRefusedRequest, SalesforceResourceNotFound
 )
 
+logging.basicConfig(level=logging.DEBUG)
 
 # pylint: disable=invalid-name
 def getUniqueElementValueFromXmlString(xmlString, elementName):
