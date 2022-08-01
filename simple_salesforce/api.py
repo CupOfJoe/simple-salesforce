@@ -12,7 +12,11 @@ import json
 import re
 from collections import namedtuple
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig()
+logging.getLogger().setLevel(logging.DEBUG)
+requests_log = logging.getLogger("requests.packages.urllib3")
+requests_log.setLevel(logging.DEBUG)
+requests_log.propagate = True
 
 try:
     from urlparse import urlparse, urljoin
