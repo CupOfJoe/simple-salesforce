@@ -508,8 +508,13 @@ class Salesforce(object):
 
         result = self.session.request(
             method, url, headers=headers, **kwargs)
-        logging.info('Headers: ', result.request.headers)
-        logging.info('Body: ', result.request.body)
+        logging.info('req URL: ', result.request.url)
+        logging.info('req Headers: ', result.request.headers)
+        logging.info('req Body: ', result.request.body)
+        # logging.info('req Content: ', result.request._content)
+        # logging.info('req Text: ', result.request.text)
+        logging.info('req dict: ', str(result.request.__dict__))
+
 
         if result.status_code >= 300:
             exception_handler(result, name=name)
