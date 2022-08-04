@@ -510,6 +510,7 @@ class Salesforce(object):
         logging.info('Additional headers: ' + str(additional_headers))
         result = self.session.request(
             method, url, headers=headers, **kwargs)
+        logging.info('Request: ', result.request)
 
         if result.status_code >= 300:
             exception_handler(result, name=name)
