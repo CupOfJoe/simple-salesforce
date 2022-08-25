@@ -391,6 +391,8 @@ class Salesforce(object):
     def query(self, query, include_deleted=False, **kwargs):
         """Return the result of a Salesforce SOQL query as a dict decoded from
         the Salesforce response JSON payload.
+        8/25/2022 - Now uses the Composite endpoint so query can be sent as POST request.
+                    Using GET resulted in a 431 error if the query string was too long.
 
         Arguments:
 
