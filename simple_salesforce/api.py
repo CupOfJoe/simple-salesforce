@@ -12,12 +12,6 @@ import json
 import re
 from collections import namedtuple
 
-logging.basicConfig()
-logging.getLogger().setLevel(logging.DEBUG)
-requests_log = logging.getLogger("requests.packages.urllib3")
-requests_log.setLevel(logging.DEBUG)
-requests_log.propagate = True
-
 try:
     from urlparse import urlparse, urljoin
 except ImportError:
@@ -400,7 +394,6 @@ class Salesforce(object):
                    SELECT Id FROM Lead WHERE Email = "waldo@somewhere.com"
         * include_deleted -- True if deleted records should be included
         """
-        logging.info('Query: ' + query)
         url = self.base_url + 'composite'
         q_type = ('queryAll' if include_deleted else 'query')
         body = {
@@ -516,13 +509,6 @@ class Salesforce(object):
 
         result = self.session.request(
             method, url, headers=headers, **kwargs)
-        logging.info('req URL: ', result.request.url)
-        logging.info('req Headers: ', result.request.headers)
-        logging.info('req Body: ', result.request.body)
-        # logging.info('req Content: ', result.request._content)
-        # logging.info('req Text: ', result.request.text)
-        logging.info('req dict: ', str(result.request.__dict__))
-
 
         if result.status_code >= 300:
             exception_handler(result, name=name)
